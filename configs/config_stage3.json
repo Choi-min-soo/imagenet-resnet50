@@ -1,0 +1,36 @@
+{
+  "seed": 42,
+  "model": {
+    "pretrained": false,
+    "num_classes": 1000
+  },
+  "dataset": {
+    "data_dir": "/sdc1/datasets/imagenet",
+    "batch_size": 256,
+    "resize_size": 256,
+    "crop_size": 224,
+    "num_workers": 8,
+    "pin_memory": true
+  },
+  "optimizer": {
+    "lr": 0.01,
+    "momentum": 0.9,
+    "weight_decay": 0.0001
+  },
+  "training": {
+    "resume_from": "checkpoints/stage2_aug.pt",
+    "warmup_epochs": 5,
+    "max_epochs": 60,
+    "print_interval": 100,
+    "save_dir": "./checkpoints",
+    "distributed": false,
+    "use_amp": true,
+    "use_sam": true,
+    "mixup_prob": 0.5,
+    "cutmix_prob": 0.5
+  },
+  "wandb": {
+    "project": "resnet50-scratch",
+    "name": "stage3_final"
+  }
+}
